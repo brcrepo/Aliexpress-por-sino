@@ -9,7 +9,7 @@
 // @grant        none
 // ==/UserScript==
 
-var jsonPorSino = "https://raw.githubusercontent.com/brcrepo/Aliexpress-por-sino/master/tiendasPorSino.json";
+var jsonPorSino = "https://cdn.rawgit.com/brcrepo/Aliexpress-por-sino/master/tiendasPorSino.json";
 var tiendasPorSino;
 
 $.getJSON(jsonPorSino ,function(data){
