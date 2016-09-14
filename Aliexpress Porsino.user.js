@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Aliexpress Porsino
 // @namespace    chw.orochimaru
-// @version      0.2
+// @version      0.3
 // @description  Script para destacar tiendas que hacen envíos por sinotrans en aliexpress
 // @author       BRC
 // @match        *.aliexpress.com/*
@@ -53,3 +53,18 @@ $(function(){
     });
 
 });
+
+function correosChileLink(){
+
+    var aliTrackingNum = $(".shipping-bd td.no").text().replace(/ |\n/g,"").trim();
+    var correosChileTrackingNum = aliTrackingNum.match(/\d{12}(?=001$)/);
+
+    if(correosChileTrackingNum){
+
+        $('<a class="ui-button ui-button-normal ui-track" href="http://www.correos.cl/SitePages/seguimiento/seguimiento.aspx?envio='+correosChileTrackingNum+'">Ver en Correos Chile</a>')
+            .insertAfter("a.ui-track");
+
+    }
+}
+
+correosChileLink();
