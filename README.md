@@ -12,7 +12,7 @@ Userscript para destacar tiendas que hacen envíos por sinotrans en aliexpress
 ![tienda degrade](http://imgur.com/L2Y4XRg.png) : tiendas inconsistentes (a veces envian por sinotrans y a veces no)
 
 
-![tienda amarilla](http://imgur.com/jbCiIf1.png) : tiendas que envian por sinotrans, pero no comprobadas por usuarios del foro
+![tienda amarilla](http://imgur.com/jbCiIf1.png) : tiendas que envian por sinotrans, pero no estan comprobadas por usuarios del foro
 
 
 
