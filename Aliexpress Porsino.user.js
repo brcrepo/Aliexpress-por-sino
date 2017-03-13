@@ -4,7 +4,8 @@
 // @version      0.4
 // @description  Script para destacar tiendas que hacen envíos por sinotrans en aliexpress
 // @author       BRC
-// @match        *.aliexpress.com/*
+// @match        https://*.aliexpress.com/*
+// @match        http://*.aliexpress.com/*
 // @require      http://code.jquery.com/jquery-latest.js
 // @grant        none
 // ==/UserScript==
