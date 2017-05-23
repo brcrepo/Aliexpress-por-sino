@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Aliexpress Porsino
 // @namespace    chw.orochimaru
-// @version      0.4
+// @version      0.6
 // @description  Script para destacar tiendas que hacen envíos por sinotrans en aliexpress
 // @author       BRC
 // @match        *.aliexpress.com/*
@@ -75,19 +75,49 @@ function colorear(){
 function correosChileLink(){
 
     var aliTrackingNum = $(".shipping-bd td.no").text().replace(/ |\n/g,"").trim();
-    var correosChileTrackingNum = aliTrackingNum.match(/\d{12}(?=001$)/);
+    var sinoTransToCorreosChile = aliTrackingNum.match(/\d{12}(?=001$)/);
 
-    if(correosChileTrackingNum){
+    //transforma el numero grande de sino trans a el numero valido para seguimiento en correos de chile
+    if(sinoTransToCorreosChile){
 
-        $('<a class="ui-button ui-button-normal ui-track" href="http://www.correos.cl/SitePages/seguimiento/seguimiento.aspx?envio='+correosChileTrackingNum+'">Ver en Correos Chile</a>')
+        $('<a class="ui-button ui-button-normal ui-track" href="http://www.correos.cl/SitePages/seguimiento/seguimiento.aspx?envio='+sinoTransToCorreosChile+'">Ver en Correos Chile</a>')
+            .insertAfter("a.ui-track");
+
+    }else{
+
+        //alternativamente se usa el numero de manera normal
+
+        $('<a class="ui-button ui-button-normal ui-track" href="http://www.correos.cl/SitePages/seguimiento/seguimiento.aspx?envio='+aliTrackingNum+'">Ver en Correos Chile</a>')
             .insertAfter("a.ui-track");
 
     }
+}
+
+function alertaPocosDias(){
+
+    //elemento que contiene el tiempo restante
+    let timeLeft = $('p.left-sendgoods-day');
+
+    $(timeLeft).each(function(){
+
+        let days = (((this.attributes['lefttime'].value/1000)/60)/60)/24;
+
+        if(days<7){
+
+            //cuando quedan menos de 7 dias se cambia el color y el tamaño del texto para que sea mas visible
+            this.style.color ="red";
+            this.style.fontSize ="large";
+
+        }
+
+    });
+
 }
 
 $(function(){
 
     colorear();
     correosChileLink();
+    alertaPocosDias();
 
 });
